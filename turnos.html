@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Turnos</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-turnos">
+
+<header class="turnos-header">
+    <h1>Bienvenido {{nombre}}</h1>
+    <a href="/logout" class="logout-btn">Cerrar sesión</a>
+</header>
+
+<main class="turnos-main">
+
+    <!-- RESERVAR -->
+    <section class="turno-card">
+        <h2>⚽ Reservar nuevo turno</h2>
+        <form method="POST">
+            <input name="nombre" placeholder="Nombre de la reserva" required>
+            <input type="number" name="jugadores" placeholder="Cantidad de jugadores" required>
+            <input type="time" name="hora" required>
+            <input type="date" name="fecha" required>
+            <button>Confirmar turno</button>
+        </form>
+    </section>
+
+    <!-- LISTADO -->
+    <section class="turno-card">
+        <h2>📋 Turnos reservados</h2>
+
+        {% if turnos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Jugadores</th>
+                    <th>Precio</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in turnos %}
+                <tr>
+                    <td>{{t.fecha_turno}}</td>
+                    <td>{{t.hora_turno}}</td>
+                    <td>{{t.cantidad_jugadores}}</td>
+                    <td>$ {{t.precio}}</td>
+                    <td>
+                        <button class="cancel-btn"
+                            onclick="abrirCancelar({{t.id}})">
+                            Cancelar
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p class="vacio">No tenés turnos reservados.</p>
+        {% endif %}
+    </section>
+
+</main>
+
+<!-- MODAL CONFIRMAR CANCELACIÓN -->
+<div class="modal" id="cancelarModal">
+    <div class="modal-box error">
+        <h3>⚠️ Cancelar turno</h3>
+        <p>¿Estás seguro de que querés cancelar este turno?</p>
+
+        <form id="formCancelar" method="POST">
+            <button type="submit">Sí, cancelar</button>
+            <button type="button" onclick="cerrarCancelar()">No</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODALES EXISTENTES -->
+{% if mensaje == "ocupado" %}
+<div class="modal show">
+    <div class="modal-box error">
+        <h3>⛔ Horario no disponible</h3>
+        <p>Ese turno ya está reservado.</p>
+        <button onclick="this.closest('.modal').style.display='none'">Aceptar</button>
+    </div>
+</div>
+{% endif %}
+
+{% if mensaje == "ok" %}
+<div class="modal show">
+    <div class="modal-box ok">
+        <h3>✅ Turno reservado</h3>
+        <p>Tu turno fue registrado correctamente.</p>
+        <button onclick="this.closest('.modal').style.display='none'">Aceptar</button>
+    </div>
+</div>
+{% endif %}
+
+<script>
+function abrirCancelar(id){
+    document.getElementById("cancelarModal").style.display = "flex";
+    document.getElementById("formCancelar").action = "/cancelar_turno/" + id;
+}
+
+function cerrarCancelar(){
+    document.getElementById("cancelarModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>

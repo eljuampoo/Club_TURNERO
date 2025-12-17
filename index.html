@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Club Deportivo – Turnero</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-index">
+
+<div class="home">
+    <h1>⚽ Club Deportivo</h1>
+    <p>Turnero online para reservas de fútbol</p>
+
+    <div class="home-buttons">
+        <button class="btn" onclick="openModal('login')">Iniciar sesión</button>
+        <button class="btn btn-outline" onclick="openModal('register')">Registrarse</button>
+    </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+
+    <!-- LOGIN -->
+    <div class="modal" id="login">
+        <span class="close" onclick="closeModal()">×</span>
+        <h2>Iniciar sesión</h2>
+        <form method="POST">
+            <input type="hidden" name="accion" value="login">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button class="btn">Ingresar</button>
+        </form>
+    </div>
+
+    <!-- REGISTRO -->
+    <div class="modal" id="register">
+        <span class="close" onclick="closeModal()">×</span>
+        <h2>Registro</h2>
+        <form method="POST">
+            <input type="hidden" name="accion" value="registro">
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button class="btn">Registrarse</button>
+        </form>
+    </div>
+
+    <!-- REGISTRO OK -->
+    <div class="modal" id="ok">
+        <h2>✅ Registro exitoso</h2>
+        <p>Tu cuenta fue creada correctamente.<br>Ya podés iniciar sesión.</p>
+        <button class="btn" onclick="closeModal()">Aceptar</button>
+    </div>
+
+</div>
+
+<footer>
+    Tesina 6° año – Turnero Deportivo
+</footer>
+
+<script>
+function openModal(id){
+    document.getElementById("overlay").style.display = "flex";
+    document.querySelectorAll(".modal").forEach(m => m.style.display="none");
+    document.getElementById(id).style.display = "block";
+}
+
+function closeModal(){
+    document.getElementById("overlay").style.display = "none";
+}
+
+const params = new URLSearchParams(window.location.search);
+if(params.get("registro") === "ok"){
+    openModal("ok");
+}
+</script>
+
+</body>
+</html>
