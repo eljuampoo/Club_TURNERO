@@ -29,7 +29,7 @@ Este proyecto fue desarrollado como **tesina de 6° año**, aplicando conceptos 
 ---
 
 ### 2️⃣ Clonar el repositorio
-```bash
+
 git clone https://github.com/tu-usuario/club-turnero.git
 cd club-turnero
 
@@ -37,10 +37,10 @@ cd club-turnero
 python -m venv .venv
 .\.venv\Scripts\activate
 
-4️⃣ Instalar dependencias
+### 4️⃣ Instalar dependencias
 pip install flask mysql-connector-python
 
-5️⃣ Configuración de la base de datos
+### 5️⃣ Configuración de la base de datos
 
 Abrir phpMyAdmin
 
@@ -67,7 +67,7 @@ def conectar_db():
         database="club_turnero"
     )
 
-7️⃣ Ejecutar la aplicación
+### 7️⃣ Ejecutar la aplicación
 python app.py
 
 
@@ -172,7 +172,7 @@ JavaScript
 
 XAMPP (MySQL + phpMyAdmin)
 
-▶️ How to Run the Application (English)
+### ▶️ How to Run the Application (English)
 1️⃣ Requirements
 
 Python 3 installed
@@ -183,18 +183,18 @@ MySQL running
 
 Web browser
 
-2️⃣ Clone the repository
+### 2️⃣ Clone the repository
 git clone https://github.com/your-username/club-turnero.git
 cd club-turnero
 
-3️⃣ Create and activate virtual environment (optional)
+### 3️⃣ Create and activate virtual environment (optional)
 python -m venv .venv
 .\.venv\Scripts\activate
 
-4️⃣ Install dependencies
+### 4️⃣ Install dependencies
 pip install flask mysql-connector-python
 
-5️⃣ Database setup
+### 5️⃣ Database setup
 
 Open phpMyAdmin
 
@@ -205,7 +205,7 @@ club_turnero
 
 Import SQL script to create tables
 
-6️⃣ Database connection configuration
+### 6️⃣ Database connection configuration
 
 Check database credentials in app.py:
 
@@ -217,7 +217,7 @@ def conectar_db():
         database="club_turnero"
     )
 
-7️⃣ Run the application
+### 7️⃣ Run the application
 python app.py
 
 
@@ -225,8 +225,8 @@ Open in browser:
 
 http://127.0.0.1:5000
 
-⚙️ Implemented Features (CRUD)
-👤 Users
+### ⚙️ Implemented Features (CRUD)
+### 👤 Users
 
 Create user (Registration)
 
@@ -234,7 +234,7 @@ Read user (Login)
 
 Logout
 
-⚽ Reservations
+###⚽ Reservations
 
 Create reservation
 
@@ -244,7 +244,7 @@ Delete reservation
 
 Duplicate schedule validation
 
-🧪 Testing Instructions
+### 🧪 Testing Instructions
 
 Register a new user
 
@@ -256,7 +256,7 @@ Try booking the same time slot again
 
 Cancel a reservation
 
-⭐ Extra Features
+### ⭐ Extra Features
 
 Modal-based interface
 
