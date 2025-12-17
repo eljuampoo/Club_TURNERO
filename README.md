@@ -32,7 +32,8 @@ Este proyecto fue desarrollado como **tesina de 6° año**, aplicando conceptos 
 ```bash
 git clone https://github.com/tu-usuario/club-turnero.git
 cd club-turnero
-3️⃣ Crear y activar entorno virtual (opcional)
+
+### 3️⃣ Crear y activar entorno virtual (opcional)
 python -m venv .venv
 .\.venv\Scripts\activate
 
@@ -54,7 +55,7 @@ usuarios
 
 turnos
 
-6️⃣ Configuración de conexión MySQL
+ ### 6️⃣ Configuración de conexión MySQL
 
 En el archivo app.py, verificar los datos de conexión:
 
